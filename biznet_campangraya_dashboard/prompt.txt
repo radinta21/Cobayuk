@@ -1,0 +1,34 @@
+Buatkan dashboard monitoring untuk Branch Biznet Campang Raya.
+
+Kebutuhan & fitur (harus ada):
+1. Dashboard slice berdasarkan Tahun dan Bulan (filter).
+2. Visualisasikan jumlah penjualan pada bulan tersebut untuk masing-masing Area Coordinator.
+3. Net subscriber = jumlah new subscriber bulan tersebut dikurangi jumlah terminasi di bulan tersebut.
+4. Target net subscriber branch bulanan: 100 (tampilkan di KPI utama).
+5. Pencapaian masing-masing Area Coordinator pada bulan berjalan, dengan target per AC: minimal 40 new subscriber setiap bulan.
+6. Churn rate = (jumlah terminasi di bulan berjalan / jumlah customer active) * 100. Target churn rate bulanan < 1%.
+7. Forecast Net Subscriber hingga akhir bulan (sederhana: pro-rata berdasarkan hari berjalan atau model regresi linier sederhana).
+8. Jumlah net subscriber masing-masing Area Coordinator pada bulan berjalan.
+9. Visualisasi data district & sub-district penjualan tahun lalu vs tahun ini (untuk bulan yang sama) per Area Coordinator.
+10. Jumlah customer active per Area Coordinator.
+11. Jumlah customer suspend per Area Coordinator.
+12. Perbandingan target 1% churn rate vs churn rate per Area Coordinator.
+13. Grafik daily prospect per Area Coordinator (jumlah prospect per hari).
+14. Pie chart: sub-district prospect per Area Coordinator.
+15. Pie chart: ISP prospect per Area Coordinator.
+16. Pie chart: source prospect per Area Coordinator.
+17. List customer terminasi pada bulan berjalan (tabel detail).
+
+Data sources:
+- Google Sheets (3 sheet): Sales, Terminasi, Prospect (links provided).
+- Google Apps Script Web App: the single endpoint that can return sheet data or pre-aggregated summary.
+
+Output:
+- Dashboard HTML/React (Next.js) runnable locally and deployable to Vercel via GitHub.
+- Serverless proxy to Apps Script to avoid CORS.
+- Mobile-friendly layout.
+
+Catatan teknis:
+- Jika Apps Script belum mengembalikan summary, lakukan agregasi di serverless proxy atau di client.
+- Sediakan konfigurasi `NEXT_PUBLIC_APPS_SCRIPT_URL` sebagai environment variable.
+- Beri opsi target konfigurasi (branch target, AC targets).
